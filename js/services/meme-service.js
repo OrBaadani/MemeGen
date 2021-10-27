@@ -14,17 +14,17 @@ var gImgs = [{
 
 ];
 
-var gMeme = [{
-    selectedImgId: 1,
-    selectedLineIdx: 0,
-    lines: [{
-        txt: 'I never eat Falafel',
-        size: 20,
-        align: 'left',
-        color: 'red'
-    }]
-}];
-var gMemes;
+var gMeme;
+// {
+// selectedImgId: 1,
+// selectedLineIdx: 0,
+// lines: [{
+//     txt: '',
+//     size: 40,
+//     align: '',
+//     color: ''
+// }]
+// };
 
 function createImgs(id, keywords) {
     [{
@@ -34,11 +34,16 @@ function createImgs(id, keywords) {
     }];
 }
 
-function _createMeme(imgId, txt, size, align, color) {
-    return {
+function createMeme(imgId, txt, pos, size, align, color) {
+    if (!size) size = 40;
+    if (!align) align = 'ltr';
+    if (!color) color = 'black';
+    if (!pos) pos = { x: 50, y: 50 };
+    gMeme = {
         selectedImgId: imgId,
         selectedLineIdx: 0,
         lines: [{
+            pos,
             txt,
             size,
             align,
@@ -47,12 +52,18 @@ function _createMeme(imgId, txt, size, align, color) {
     };
 }
 
-function addMeme(imgId, txt, size, align, color) {
-    gMemes.unshift(_createMeme(imgId, txt, size, align, color));
+function createLine(pos, txt, size, align, color) {
+    gMeme.lines.push({
+        pos,
+        txt,
+        size,
+        align,
+        color
+    });
 }
 
-function getMemes() {
-    return gMemes;
+function getCurrMeme() {
+    return gMeme;
 }
 
 function getImgs() {
@@ -63,5 +74,28 @@ function getImgsById(imgID) {
     return gImgs.find(function(img) {
         return img.id === imgID;
     });
+}
 
+function updateMemeCurrImg(imgID) {
+    gMeme.selectedImgId = imgID;
+}
+
+// function updateMemeTxtSize(lineID, size) {
+//     gMeme.lines[lineID].size = size;
+// }
+
+// function updateMemeTxt(lineID, txt) {
+//     gMeme.lines[lineID].txt = txt;
+// }
+
+// function updateMemeTxtColor(lineID, color) {
+//     gMeme.lines[lineID].color = color;
+// }
+
+function updateMemeTxt(lineID, property, value) {
+    gMeme.lines[lineID][property] = value;
+}
+
+function updateLinePos(lineID, axis, value) {
+    gMeme.lines[lineID].pos.axis = value;
 }

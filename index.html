@@ -12,9 +12,19 @@
 <body onload="init()">
     <section class="meme-generator">
         <canvas id="canvas" height="450" width="450"></canvas>
-        <div class="edit-tools"><input name="txt" id="txt" type="text" placeholder="text"></section>
-    </div>
+        <div class="edit-tools">
+            <input name="txt" id="txt" type="text" placeholder="text" onkeyup="onTypeText(this)">
+            <button onclick="onAddMoreLines()">+</button>
+            <button onclick="onFontSize('+')">A+</button>
+            <button onclick="onFontSize('-')">A-</button>
+            <input type="color" id="color" oninput="onColor(this)">
+            <button onclick="onMoveLine('up')">↑</button>
+            <button onclick="onMoveLine('down')">↓</button>
 
+            <button onclick="onChangeLine()">⇅</button>
+
+        </div>
+    </section>
     <section class="image-gallery">
 
 
