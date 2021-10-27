@@ -99,3 +99,7 @@ function updateMemeTxt(lineID, property, value) {
 function updateLinePos(lineID, axis, value) {
     gMeme.lines[lineID].pos.axis = value;
 }
+
+function deleteLine(lineID) {
+    gMeme.lines.splice(lineID, 1);
+}
