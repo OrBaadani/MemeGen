@@ -33,7 +33,6 @@ html {
 body {
     margin: 0;
     background-color: #22252C;
-    /* font-size: .875rem; */
 }
 
 a {
@@ -44,6 +43,11 @@ a {
 button {
     border-radius: 0.5rem;
     border: none;
+}
+
+small {
+    display: block;
+    text-align: center;
 }
 
 
@@ -58,17 +62,17 @@ button {
 /* header */
 
 .header-container {
-    margin-top: 0.823rem;
-    margin-bottom: 0.823rem;
-    padding: 0 80px;
-    border-radius: 2rem;
+    margin-top: 0.823em;
+    margin-bottom: 0.823em;
+    padding: 0 30px;
+    border-radius: 2em;
     background: rgb(18, 158, 172);
     background: linear-gradient(90deg, rgba(18, 158, 172, 1) 0%, rgba(30, 170, 150, 1) 40%, rgba(41, 180, 129, 1) 70%, rgba(47, 186, 117, 1) 100%);
 }
 
 .a-clicked {
     color: #2bb67e;
-    border-radius: 2rem;
+    border-radius: 2em;
     background-color: white;
 }
 
@@ -78,20 +82,12 @@ button {
 
 .header-container li a {
     text-align: center;
-    padding: 0.588rem 1.176rem;
-    line-height: 4.117rem;
-}
-
-.logo {
-    text-transform: uppercase;
+    padding: 0.588em 1em;
+    line-height: 4.117em;
 }
 
 
 /* main */
-
-.generator-container {
-    height: 90vh;
-}
 
 .canvas-container {
     flex-basis: 50%;
@@ -102,12 +98,16 @@ button {
 .control-box {
     border-radius: 20px;
     flex-basis: 50%;
-    margin-inline-end: 40px;
-    margin-inline-start: 40px;
     /* height: 540px; */
     flex-direction: column;
     background-color: #383B42;
     padding: 25px 40px;
+}
+
+.meme-generator {
+    flex-direction: column;
+    margin-top: 0.823em;
+    margin-bottom: 0.823em;
 }
 
 
@@ -116,22 +116,23 @@ button {
 } */
 
 canvas {
-    border-radius: 1.176rem;
+    height: 325px;
+    width: 325px;
+    border-radius: 1.176em;
     border: 10px solid #383B42;
 }
 
 .control-box>input {
     border: none;
     line-height: 50px;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     box-shadow: 0 4px 0 rgb(167, 167, 167);
-    border-radius: 3rem;
+    border-radius: 3em;
     margin-bottom: 15px;
     width: 100%;
 }
 
 .control-box button {
-    font-size: 1.47em;
     line-height: 1.5em;
 }
 
@@ -141,8 +142,9 @@ canvas {
 }
 
 .line-control button {
+    font-size: 1.47em;
     color: white;
-    padding: 0 0.5rem;
+    padding: 0 0.5em;
 }
 
 .style-line {
@@ -150,18 +152,19 @@ canvas {
     background-color: #19a59f;
     text-align: center;
     padding: 12px 17px;
-    border-radius: 0.6rem;
+    border-radius: 0.6em;
 }
 
 .style-line button {
     box-shadow: 0 4px 0 gray;
-    padding: 0 0.5rem;
+    padding: 0 0.5em;
+    font-size: 1.47em;
 }
 
 .style-line input {
     height: 35px;
     width: 35px;
-    border-radius: 0.6rem;
+    border-radius: 0.6em;
     border-color: transparent;
     box-shadow: 0 4px 0 gray;
 }
@@ -224,9 +227,12 @@ canvas {
 }
 
 .share-btn {
+    font-family: poppins;
+    font-size: 1.23em;
     flex-basis: 50%;
     box-shadow: 0px 4px 0 #165b9c;
     background-color: #1e7cd3;
+    color: white;
 }
 
 .share-btn span::before {
@@ -238,16 +244,21 @@ canvas {
 }
 
 .download-btn {
+    font-weight: 400;
     text-align: center;
     flex-basis: 50%;
     box-shadow: 0px 4px 0 #632687;
     background-color: #8f44bb;
     border-radius: 0.5em;
-    font-size: 1.47em;
+    font-size: 1.23em;
 }
 
 .download-btn span::before {
     content: '\f019';
+}
+
+.size-btn {
+    font-weight: 700;
 }
 
 .delete-btn {
@@ -260,20 +271,23 @@ canvas {
 }
 
 .gallery-section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 7px;
+    padding-right: 7px;
     background-color: #383B42;
-    padding: 30px;
-    border-radius: 0.5rem;
+    border-radius: 0.5em;
 }
 
 .image-gallery {
-    grid-template-columns: repeat(auto-fill, 200px);
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, 180px);
+    gap: 15px;
     padding-top: 30px;
     justify-content: center;
 }
 
 .image-gallery img {
-    width: 200px;
+    width: 180px;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -282,9 +296,9 @@ canvas {
     /*     
     border: 10px solid;
     border-image: linear-gradient(45deg, red, blue) 10; */
-    border-radius: 0.41rem;
+    border-radius: 0.41em;
     /*1*/
-    border: 0.41rem solid transparent;
+    border: 0.41em solid transparent;
     /*2*/
     background: linear-gradient(90deg, rgba(18, 158, 172, 1) 0%, rgba(30, 170, 150, 1) 40%, rgba(41, 180, 129, 1) 70%, rgba(47, 186, 117, 1) 100%) border-box;
     /*3*/
@@ -326,4 +340,106 @@ canvas {
     margin: 0;
     padding: 0;
     list-style-type: none;
+}
+
+
+/* BP */
+
+
+/* small */
+
+@media (min-width :380px) {
+    .main-layout {
+        max-width: 460px;
+        margin: 0 auto;
+    }
+    .canvas-container {
+        align-self: center;
+    }
+    .control-box {
+        font-size: 16px
+    }
+}
+
+footer {
+    padding: 80px 0;
+}
+
+
+/* medium */
+
+@media (min-width :800px) {
+    .main-layout {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    .meme-generator {
+        margin-top: 0.823em;
+        flex-direction: row;
+    }
+    canvas {
+        height: 500px;
+        width: 500px;
+    }
+    .control-box {
+        font-size: 14px;
+        margin-inline-end: 0px;
+        margin-inline-start: 15px;
+    }
+    .canvas-container {
+        margin-inline-end: 15px;
+        margin-inline-start: 0px;
+    }
+    canvas {
+        height: 400px;
+        width: 400px;
+    }
+    .image-gallery {
+        grid-template-columns: repeat(auto-fill, 200px);
+    }
+    .image-gallery img {
+        width: 200px;
+    }
+}
+
+
+/* desktop */
+
+@media (min-width :1200px) {
+    .main-layout {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .meme-generator {
+        margin-top: 0.823em;
+        flex-direction: row;
+    }
+    .generator-container {
+        height: 90vh;
+    }
+    .image-gallery {
+        gap: 30px;
+    }
+    .gallery-section {
+        padding: 30px;
+    }
+    canvas {
+        height: 500px;
+        width: 500px;
+    }
+    .canvas-container {
+        margin-inline-end: 40px;
+        margin-inline-start: 40px;
+    }
+    .control-box {
+        font-size: 17px;
+        margin-inline-end: 40px;
+        margin-inline-start: 40px;
+    }
+    .header-container {
+        padding: 0 80px;
+    }
+    .header-container li a {
+        padding: 0.588em 1.176em;
+    }
 }

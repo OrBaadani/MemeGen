@@ -105,10 +105,10 @@ function createImgs(id, keywords) {
 }
 
 function createMeme(imgId, txt, pos, size, align, color) {
-    if (!size) size = 40;
+    if (!size) size = 50;
     if (!align) align = 'left';
     if (!color) color = 'black';
-    if (!pos) pos = { x: 50, y: 50 };
+    if (!pos) pos = { x: 50, y: 75 };
     gMeme = {
         selectedImgId: imgId,
         selectedLineIdx: 0,

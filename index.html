@@ -12,7 +12,7 @@
 <body onload="init()">
     <header class="main-header">
         <div class="header-container main-layout flex  space-between align-center">
-            <div class="logo"><a href="#">MEME-GEN</a></div>
+            <div class="logo"><a href="#">MemeGen</a></div>
             <ul class="flex clean-list ">
                 <li><a href="#gallery-section">Gallery</a></li>
                 <li><a href="#">About</a></li>
@@ -34,8 +34,8 @@
                         <button class="delete-btn btn-fa" onclick="onDeleteLine()"></button>
                     </section>
                     <section class="style-line">
-                        <button onclick="onFontSize('+')">A+</button>
-                        <button onclick="onFontSize('-')">A-</button>
+                        <button class="size-btn" onclick="onFontSize('+')">A+</button>
+                        <button class="size-btn" onclick="onFontSize('-')">A-</button>
                         <input type="color" id="color" oninput="onColor(this)">
                         <button class="up-btn btn-fa" onclick="onMoveLine('up')"></button>
                         <button class="down-btn btn-fa" onclick="onMoveLine('down')"></button>

@@ -46,7 +46,7 @@ function drawText(x, y, text, size, color, align) {
 
 
 function onTypeText(elText) {
-    if (getCurrMeme().lines.length === 0) createLine({ x: 50, y: 50 }, '', 40, '', '');
+    if (getCurrMeme().lines.length === 0) createLine({ x: 50, y: 75 }, '', 50, '', '');
 
     updateMemeTxt(getCurrMeme().selectedLineIdx, 'txt', elText.value);
     renderCanvas();
@@ -111,7 +111,7 @@ function onAddMoreLines() {
     lineId++;
     document.querySelector('#txt').value = '';
     updateSelectedLine(lineId);
-    if (lineId === 1) createLine({ x: 50, y: 350 }, '', 40, '', '');
+    if (lineId === 1) createLine({ x: 50, y: 400 }, '', 50, '', '');
 }
 
 function onMoveLine(upDown) {
