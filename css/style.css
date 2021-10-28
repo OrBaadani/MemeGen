@@ -16,6 +16,11 @@
     src: url(../font/Poppins/Poppins-Medium.ttf);
 }
 
+@font-face {
+    font-family: fa;
+    src: url(../font/fa-solid-900.ttf);
+}
+
 
 /* BASIC */
 
@@ -27,7 +32,7 @@ html {
 
 body {
     margin: 0;
-    background-color: #383B42;
+    background-color: #22252C;
     /* font-size: .875rem; */
 }
 
@@ -36,11 +41,16 @@ a {
     color: inherit;
 }
 
+button {
+    border-radius: 0.5rem;
+    border: none;
+}
+
 
 /* LAYOUT */
 
 .main-layout {
-    max-width: 1200px;
+    max-width: 1258px;
     margin: 0 auto;
 }
 
@@ -51,14 +61,14 @@ a {
     margin-top: 0.823rem;
     margin-bottom: 0.823rem;
     padding: 0 80px;
-    border-radius: 40px;
+    border-radius: 2rem;
     background: rgb(18, 158, 172);
     background: linear-gradient(90deg, rgba(18, 158, 172, 1) 0%, rgba(30, 170, 150, 1) 40%, rgba(41, 180, 129, 1) 70%, rgba(47, 186, 117, 1) 100%);
 }
 
 .a-clicked {
     color: #2bb67e;
-    border-radius: 20px;
+    border-radius: 2rem;
     background-color: white;
 }
 
@@ -68,30 +78,198 @@ a {
 
 .header-container li a {
     text-align: center;
-    padding: 10px 20px;
+    padding: 0.588rem 1.176rem;
     line-height: 4.117rem;
 }
 
 .logo {
-    /* text-transform: uppercase; */
+    text-transform: uppercase;
 }
 
 
 /* main */
 
-.meme-generator {
+.generator-container {
     height: 90vh;
 }
 
-.control-box {
-    flex-direction: column;
+.canvas-container {
+    flex-basis: 50%;
+    margin-inline-end: 40px;
+    margin-inline-start: 40px;
 }
 
-.share-btn {}
+.control-box {
+    border-radius: 20px;
+    flex-basis: 50%;
+    margin-inline-end: 40px;
+    margin-inline-start: 40px;
+    /* height: 540px; */
+    flex-direction: column;
+    background-color: #383B42;
+    padding: 25px 40px;
+}
+
+
+/* .control-box>* {
+    margin-bottom: 15px;
+} */
+
+canvas {
+    border-radius: 1.176rem;
+    border: 10px solid #383B42;
+}
+
+.control-box>input {
+    border: none;
+    line-height: 50px;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 0 rgb(167, 167, 167);
+    border-radius: 3rem;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.control-box button {
+    font-size: 1.47em;
+    line-height: 1.5em;
+}
+
+.line-control {
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.line-control button {
+    color: white;
+    padding: 0 0.5rem;
+}
+
+.style-line {
+    margin-bottom: 24px;
+    background-color: #19a59f;
+    text-align: center;
+    padding: 12px 17px;
+    border-radius: 0.6rem;
+}
+
+.style-line button {
+    box-shadow: 0 4px 0 gray;
+    padding: 0 0.5rem;
+}
+
+.style-line input {
+    height: 35px;
+    width: 35px;
+    border-radius: 0.6rem;
+    border-color: transparent;
+    box-shadow: 0 4px 0 gray;
+}
+
+.share-download {
+    margin-bottom: 27px;
+    gap: 20px;
+    width: 100%;
+}
+
+.share-download span {
+    font-family: fa;
+}
+
+.stickers-section {
+    flex-grow: 1;
+}
+
+.align-right-btn::before {
+    content: '\f038';
+}
+
+.align-center-btn::before {
+    content: '\f037';
+}
+
+.align-left-btn::before {
+    content: '\f036';
+}
+
+.btn-fa {
+    font-family: fa;
+}
+
+.change-btn {
+    background-color: #3aaecc;
+    box-shadow: 0 4px 0 #048a97;
+}
+
+.change-btn::before {
+    content: '\f362';
+    transform: rotate(45deg);
+}
+
+.add-btn {
+    background-color: #3ac24f;
+    box-shadow: 0 4px 0 #015d32;
+}
+
+.add-btn::before {
+    content: '\f067';
+}
+
+.up-btn::before {
+    content: '\f062';
+}
+
+.down-btn::before {
+    content: '\f063';
+}
+
+.share-btn {
+    flex-basis: 50%;
+    box-shadow: 0px 4px 0 #165b9c;
+    background-color: #1e7cd3;
+}
+
+.share-btn span::before {
+    content: '\f1e0';
+}
+
+.search-btn::before {
+    content: '\f002';
+}
+
+.download-btn {
+    text-align: center;
+    flex-basis: 50%;
+    box-shadow: 0px 4px 0 #632687;
+    background-color: #8f44bb;
+    border-radius: 0.5em;
+    font-size: 1.47em;
+}
+
+.download-btn span::before {
+    content: '\f019';
+}
+
+.delete-btn {
+    background-color: #e43d36;
+    box-shadow: 0 4px 0 #8c0606;
+}
+
+.delete-btn::before {
+    content: '\f2ed'
+}
+
+.gallery-section {
+    background-color: #383B42;
+    padding: 30px;
+    border-radius: 0.5rem;
+}
 
 .image-gallery {
-    grid-template-columns: repeat(5, 200px);
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, 200px);
+    gap: 30px;
+    padding-top: 30px;
+    justify-content: center;
 }
 
 .image-gallery img {
@@ -104,9 +282,9 @@ a {
     /*     
     border: 10px solid;
     border-image: linear-gradient(45deg, red, blue) 10; */
-    border-radius: 10px;
+    border-radius: 0.41rem;
     /*1*/
-    border: 10px solid transparent;
+    border: 0.41rem solid transparent;
     /*2*/
     background: linear-gradient(90deg, rgba(18, 158, 172, 1) 0%, rgba(30, 170, 150, 1) 40%, rgba(41, 180, 129, 1) 70%, rgba(47, 186, 117, 1) 100%) border-box;
     /*3*/

@@ -80,7 +80,9 @@ function onChooseImg(elImg, imgID) {
     gCurrImg = elImg;
     uploadImgToCanvas(imgID);
     createMeme(imgID, '');
+
     // updateMemeCurrImg(imgID);
+    document.querySelector('.generator-container').style.display = 'block';
 }
 
 function onFontSize(bigSmall) {

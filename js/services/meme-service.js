@@ -50,6 +50,46 @@ var gImgs = [{
         id: 10,
         url: 'img/meme-imgs-sqr/10.jpg',
         keywords: ['happy']
+    },
+    {
+        id: 11,
+        url: 'img/meme-imgs-sqr/11.jpg',
+        keywords: ['happy']
+    },
+    {
+        id: 12,
+        url: 'img/meme-imgs-sqr/12.jpg',
+        keywords: ['happy']
+    },
+    {
+        id: 13,
+        url: 'img/meme-imgs-sqr/13.jpg',
+        keywords: ['happy']
+    },
+    {
+        id: 14,
+        url: 'img/meme-imgs-sqr/14.jpg',
+        keywords: ['happy']
+    },
+    {
+        id: 15,
+        url: 'img/meme-imgs-sqr/15.jpg',
+        keywords: ['happy']
+    },
+    {
+        id: 16,
+        url: 'img/meme-imgs-sqr/16.jpg',
+        keywords: ['happy']
+    },
+    {
+        id: 17,
+        url: 'img/meme-imgs-sqr/17.jpg',
+        keywords: ['happy']
+    },
+    {
+        id: 18,
+        url: 'img/meme-imgs-sqr/18.jpg',
+        keywords: ['happy']
     }
 
 ];

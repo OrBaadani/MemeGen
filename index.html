@@ -12,53 +12,60 @@
 <body onload="init()">
     <header class="main-header">
         <div class="header-container main-layout flex  space-between align-center">
-            <div class="logo"><a href="#">MemeGen</a></div>
+            <div class="logo"><a href="#">MEME-GEN</a></div>
             <ul class="flex clean-list ">
-                <li><a href="#image-gallery">Gallery</a></li>
+                <li><a href="#gallery-section">Gallery</a></li>
                 <li><a href="#">About</a></li>
             </ul>
         </div>
     </header>
-    <main class=" main-layout">
-        <section class="meme-generator flex ">
-            <div class="canvas-container"> <canvas id="canvas" height="450" width="450"></canvas></div>
+    <main class="main-layout">
+        <div hidden class="generator-container">
+            <section class="meme-generator flex">
+                <div class="canvas-container">
+                    <canvas id="canvas" height="500" width="500"></canvas>
+                </div>
 
-            <section class="control-box flex">
-                <input name="txt" id="txt" type="text" placeholder="text" onkeyup="onTypeText(this)">
-                <section class="line-control">
-                    <button onclick="onChangeLine()">⇅</button>
-                    <button onclick="onAddMoreLines()">+</button>
-                    <button onclick="onDeleteLine()">🗑️</button>
-                </section>
-                <section class="style-line">
-                    <button onclick="onFontSize('+')">A+</button>
-                    <button onclick="onFontSize('-')">A-</button>
-                    <input type="color" id="color" oninput="onColor(this)">
-                    <button onclick="onMoveLine('up')">↑</button>
-                    <button onclick="onMoveLine('down')">↓</button>
+                <section class="control-box flex align-center">
+                    <input name="txt" id="txt" type="text" placeholder="text" onkeyup="onTypeText(this)">
+                    <section class="line-control flex">
+                        <button class="change-btn btn-fa" onclick="onChangeLine()"></button>
+                        <button class="add-btn btn-fa" onclick="onAddMoreLines()"></button>
+                        <button class="delete-btn btn-fa" onclick="onDeleteLine()"></button>
+                    </section>
+                    <section class="style-line">
+                        <button onclick="onFontSize('+')">A+</button>
+                        <button onclick="onFontSize('-')">A-</button>
+                        <input type="color" id="color" oninput="onColor(this)">
+                        <button class="up-btn btn-fa" onclick="onMoveLine('up')"></button>
+                        <button class="down-btn btn-fa" onclick="onMoveLine('down')"></button>
 
+                        <br><br>
+                        <button class="align-left-btn btn-fa" onclick="onAlign('left')"></button>
+                        <button class="align-center-btn btn-fa" onclick="onAlign('center')"></button>
+                        <button class="align-right-btn btn-fa" onclick="onAlign('right')"></button>
 
-                    <button onclick="onAlign('left')">left</button>
-                    <button onclick="onAlign('right')">right</button>
-                    <button onclick="onAlign('center')">center</button>
-                </section>
-
-                <section class="share-download"><a href="#" class="btn" onclick="downloadMeme(this)" download="my-meme.jpg">Download</a> <button title="Share on Facebook" target="_blank" onclick="uploadShare()">Share</button>
+                    </section>
+                    <section class="stickers-section">stickers</section>
+                    <section class="share-download flex"><a href="#" class="download-btn  " onclick="downloadMeme(this)" download="my-meme.jpg"><span></span> Download</a> <button class="share-btn " title="Share on Facebook" target="_blank" onclick="uploadShare()"><span></span> Share</button>
+                    </section>
                 </section>
             </section>
-        </section>
-        <div class="search-bar">
-            <form class="" action="">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit">🔍</button>
-            </form>
-
         </div>
-        <section id="image-gallery" class="image-gallery main-layout grid">
+        <section id="gallery-section" class="gallery-section">
+
+            <div class="search-bar">
+                <form class="" action="">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button class="search-btn btn-fa" type="submit"></button>
+                </form>
+
+            </div>
+            <section id="image-gallery" class="image-gallery  grid">
 
 
+            </section>
         </section>
-
     </main>
     <footer>
         <small>© 2021 MemeGen  -  All Rights Reserved  -  Or Baadani</small>
