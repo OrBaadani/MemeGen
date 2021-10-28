@@ -99,6 +99,18 @@ a {
     border-radius: 10px;
 }
 
+.image-gallery img:hover {
+    /*     
+    border: 10px solid;
+    border-image: linear-gradient(45deg, red, blue) 10; */
+    border-radius: 10px;
+    /*1*/
+    border: 10px solid transparent;
+    /*2*/
+    background: linear-gradient(90deg, rgba(18, 158, 172, 1) 0%, rgba(30, 170, 150, 1) 40%, rgba(41, 180, 129, 1) 70%, rgba(47, 186, 117, 1) 100%) border-box;
+    /*3*/
+}
+
 
 /* HELPERS */
 
