@@ -39,7 +39,7 @@ function drawText(x, y, text, size, color, align) {
     gCtx.strokeStyle = 'white';
     gCtx.fillStyle = color;
     gCtx.font = `${size}px Impact`;
-    gCtx.direction = align;
+    gCtx.textAlign = align;
     gCtx.fillText(text, x, y);
     gCtx.strokeText(text, x, y);
 }
@@ -96,34 +96,52 @@ function onFontSize(bigSmall) {
 function onChangeLine() {
     var text = document.querySelector('#txt').value;
     text = '';
-    if (getCurrMeme().selectedLineIdx === 1) getCurrMeme().selectedLineIdx = 0;
-    else if (getCurrMeme().selectedLineIdx === 0) getCurrMeme().selectedLineIdx = 1;
-    text = getCurrMeme().lines[getCurrMeme().selectedLineIdx].txt;
+    var lineId = getCurrMeme().selectedLineIdx;
+    if (lineId === 1) lineId = 0;
+    else if (lineId === 0) lineId = 1;
+    updateSelectedLine(lineId);
+    text = getCurrMeme().lines[lineId].txt;
 }
 
 function onAddMoreLines() {
-    if (getCurrMeme().selectedLineIdx === 1) return;
-    getCurrMeme().selectedLineIdx++;
+    var lineId = getCurrMeme().selectedLineIdx;
+    if (lineId === 1) return;
+    lineId++;
     document.querySelector('#txt').value = '';
-    if (getCurrMeme().selectedLineIdx === 1) createLine({ x: 50, y: 350 }, '', 40, '', '');
+    updateSelectedLine(lineId);
+    if (lineId === 1) createLine({ x: 50, y: 350 }, '', 40, '', '');
 }
 
 function onMoveLine(upDown) {
     var lineId = getCurrMeme().selectedLineIdx;
-    if (upDown === 'up') getCurrMeme().lines[lineId].pos.y -= 10;
-    else if (upDown === 'down') getCurrMeme().lines[lineId].pos.y += 10;
-    updateLinePos(lineId, 'y', getCurrMeme().lines[lineId].pos.y);
+    var posY = getCurrMeme().lines[lineId].pos.y;
+    if (upDown === 'up') posY -= 10;
+    else if (upDown === 'down') posY += 10;
+    updateLinePos(lineId, 'y', posY);
     renderCanvas();
     renderTxtLine();
 }
 
 function onDeleteLine() {
-    var lineId = getCurrMeme().selectedLineIdx;
     if (getCurrMeme().lines.length === 0) return;
+    var lineId = getCurrMeme().selectedLineIdx;
+    console.log('', lineId);
     deleteLine(lineId);
-    console.log(lineId);
-    renderTxtLine();
     renderCanvas();
+    renderTxtLine();
+    if (lineId !== 0) lineId--;
+    updateSelectedLine(lineId);
     document.querySelector('#txt').value = '';
+}
 
+function onAlign(value) {
+    updateMemeTxt(getCurrMeme().selectedLineIdx, 'align', value);
+    renderCanvas();
+    renderTxtLine();
+}
+
+function downloadMeme(elLink) {
+    // setBackground('white');
+    const imgContent = gElCanvas.toDataURL('image/jpeg');
+    elLink.href = imgContent;
 }

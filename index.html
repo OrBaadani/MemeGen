@@ -12,7 +12,7 @@
 <body onload="init()">
     <section class="meme-generator">
         <canvas id="canvas" height="450" width="450"></canvas>
-        <div class="edit-tools">
+        <section class="control-box">
             <input name="txt" id="txt" type="text" placeholder="text" onkeyup="onTypeText(this)">
             <button onclick="onAddMoreLines()">+</button>
             <button onclick="onFontSize('+')">A+</button>
@@ -22,12 +22,12 @@
             <button onclick="onMoveLine('down')">↓</button>
 
             <button onclick="onChangeLine()">⇅</button>
-            <button onclick="onAlign()">left</button>
-            <button onclick="onAlign()">right</button>
-            <button onclick="onAlign()">center</button>
+            <button onclick="onAlign('left')">left</button>
+            <button onclick="onAlign('right')">right</button>
+            <button onclick="onAlign('center')">center</button>
             <button onclick="onDeleteLine()">🗑️</button>
-
-        </div>
+            <a href="#" class="btn" onclick="downloadMeme(this)" download="my-meme.jpg">Download</a>
+        </section>
     </section>
     <section class="image-gallery">
 

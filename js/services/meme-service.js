@@ -15,16 +15,6 @@ var gImgs = [{
 ];
 
 var gMeme;
-// {
-// selectedImgId: 1,
-// selectedLineIdx: 0,
-// lines: [{
-//     txt: '',
-//     size: 40,
-//     align: '',
-//     color: ''
-// }]
-// };
 
 function createImgs(id, keywords) {
     [{
@@ -36,7 +26,7 @@ function createImgs(id, keywords) {
 
 function createMeme(imgId, txt, pos, size, align, color) {
     if (!size) size = 40;
-    if (!align) align = 'ltr';
+    if (!align) align = 'left';
     if (!color) color = 'black';
     if (!pos) pos = { x: 50, y: 50 };
     gMeme = {
@@ -71,7 +61,7 @@ function getImgs() {
 }
 
 function getImgsById(imgID) {
-    return gImgs.find(function(img) {
+    return gImgs.find(img => {
         return img.id === imgID;
     });
 }
@@ -80,26 +70,21 @@ function updateMemeCurrImg(imgID) {
     gMeme.selectedImgId = imgID;
 }
 
-// function updateMemeTxtSize(lineID, size) {
-//     gMeme.lines[lineID].size = size;
-// }
-
-// function updateMemeTxt(lineID, txt) {
-//     gMeme.lines[lineID].txt = txt;
-// }
-
-// function updateMemeTxtColor(lineID, color) {
-//     gMeme.lines[lineID].color = color;
-// }
-
 function updateMemeTxt(lineID, property, value) {
     gMeme.lines[lineID][property] = value;
 }
 
 function updateLinePos(lineID, axis, value) {
-    gMeme.lines[lineID].pos.axis = value;
+    gMeme.lines[lineID].pos[axis] = value;
 }
 
 function deleteLine(lineID) {
-    gMeme.lines.splice(lineID, 1);
+    var lineidx = gMeme.lines.findIndex(line => {
+        return lineID === line.id;
+    })
+    gMeme.lines.splice(lineidx, 1);
+}
+
+function updateSelectedLine(newValue) {
+    gMeme.selectedLineIdx = newValue;
 }
