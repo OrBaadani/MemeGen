@@ -7,6 +7,9 @@ function uploadShare() {
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}`);
     }
     doUploadImg(imgDataUrl, onSuccess);
+    renderCanvas();
+    renderTxtLine();
+    markLine(getCurrMeme().selectedLineIdx, 'transparent');
 }
 
 function doUploadImg(imgDataUrl, onSuccess) {

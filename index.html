@@ -14,7 +14,7 @@
         <div class="header-container main-layout flex  space-between align-center">
             <div class="logo"><a href="#">MemeGen</a></div>
             <ul class="flex clean-list ">
-                <li><a href="#gallery-section">Gallery</a></li>
+                <li onclick="onShowImg()"><a href="#gallery-section">Gallery</a></li>
                 <li><a href="#">About</a></li>
             </ul>
         </div>
@@ -55,14 +55,15 @@
         <section id="gallery-section" class="gallery-section">
 
             <div class="search-bar">
-                <form class="" action="">
-                    <input type="text" placeholder="Search.." name="search">
-                    <button class="search-btn btn-fa" type="submit"></button>
-                </form>
-
+                <form>
+                    <input type="text" placeholder="Search.." name="search" class="search-input">
+                    <button class="search-btn btn-fa" onclick="onSearch(event)"></button></form>
             </div>
             <section id="image-gallery" class="image-gallery  grid">
-
+                <div class="input-file-container">
+                    <label for="file-input-btn" class="file-input-btn flex center align-center"></label>
+                    <input type="file" id="file-input-btn" name="image" onchange="onImgInput(event)" />
+                </div>
 
             </section>
         </section>

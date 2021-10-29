@@ -4,37 +4,37 @@ var gKeywords = { 'happy': 12, 'funny puk': 1 };
 var gImgs = [{
         id: 1,
         url: 'img/meme-imgs-sqr/1.jpg',
-        keywords: ['happy']
+        keywords: ['funny']
     },
     {
         id: 2,
         url: 'img/meme-imgs-sqr/2.jpg',
-        keywords: ['happy']
+        keywords: ['animal', 'happy', 'cute']
     },
     {
         id: 3,
         url: 'img/meme-imgs-sqr/3.jpg',
-        keywords: ['happy']
+        keywords: ['animal', 'happy', 'cute']
     },
     {
         id: 4,
         url: 'img/meme-imgs-sqr/4.jpg',
-        keywords: ['happy']
+        keywords: ['animal']
     },
     {
         id: 5,
         url: 'img/meme-imgs-sqr/5.jpg',
-        keywords: ['happy']
+        keywords: ['cute', 'baby', 'mad']
     },
     {
         id: 6,
         url: 'img/meme-imgs-sqr/6.jpg',
-        keywords: ['happy']
+        keywords: ['alien', 'man']
     },
     {
         id: 7,
         url: 'img/meme-imgs-sqr/7.jpg',
-        keywords: ['happy']
+        keywords: ['baby', 'cute']
     },
     {
         id: 8,
@@ -69,7 +69,7 @@ var gImgs = [{
     {
         id: 14,
         url: 'img/meme-imgs-sqr/14.jpg',
-        keywords: ['happy']
+        keywords: ['movie']
     },
     {
         id: 15,
@@ -89,7 +89,7 @@ var gImgs = [{
     {
         id: 18,
         url: 'img/meme-imgs-sqr/18.jpg',
-        keywords: ['happy']
+        keywords: ['cartoon', 'movie']
     }
 
 ];
@@ -104,11 +104,20 @@ function createImgs(id, keywords) {
     }];
 }
 
+function searchImg(searchWord) {
+    const images = gImgs.filter(img => {
+        return img.keywords.some(keyword => {
+            return (keyword === searchWord);
+        });
+    });
+    return images;
+}
+
 function createMeme(imgId, txt, pos, size, align, color) {
-    if (!size) size = 50;
-    if (!align) align = 'left';
-    if (!color) color = 'black';
-    if (!pos) pos = { x: 50, y: 75 };
+    // if (!size) size = 50;
+    // if (!align) align = 'left';
+    // if (!color) color = 'black';
+    // if (!pos) pos = { x: gElCanvas.width / 2, y: 75 };
     gMeme = {
         selectedImgId: imgId,
         selectedLineIdx: 0,
@@ -145,7 +154,11 @@ function getImgsById(imgID) {
         return img.id === imgID;
     });
 }
-
+// function getLineById(lineID) {
+//    return gMeme.lines.find(line => {
+//         return lineID === line.id;
+//     })
+// }
 function updateMemeCurrImg(imgID) {
     gMeme.selectedImgId = imgID;
 }
