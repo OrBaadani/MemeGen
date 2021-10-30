@@ -46,7 +46,7 @@
                         <button class="align-right-btn btn-fa" onclick="onAlign('right')"></button>
 
                     </section>
-                    <section class="stickers-section">stickers</section>
+                    <section class="stickers-section"></section>
                     <section class="share-download flex"><a href="#" class="download-btn  " onclick="downloadMeme(this)" download="my-meme.jpg"><span></span> Download</a> <button class="share-btn " title="Share on Facebook" target="_blank" onclick="uploadShare()"><span></span> Share</button>
                     </section>
                 </section>
@@ -54,11 +54,14 @@
         </div>
         <section id="gallery-section" class="gallery-section">
 
-            <div class="search-bar">
+            <div class="search-bar flex">
                 <form>
                     <input type="text" placeholder="Search.." name="search" class="search-input">
                     <button class="search-btn btn-fa" onclick="onSearch(event)"></button></form>
+                <div class="filter-words-section grid"></div>
+                <button onclick="onMore()" class="more-words-btn">more</button>
             </div>
+
             <section id="image-gallery" class="image-gallery  grid">
                 <div class="input-file-container">
                     <label for="file-input-btn" class="file-input-btn flex center align-center"></label>
@@ -73,8 +76,10 @@
     </footer>
 
     <script src="js/services/storage-service.js"></script>
+    <script src="js/services/image-service.js"></script>
     <script src="js/services/meme-service.js"></script>
     <script src="js/services/upload-service.js"></script>
+    <script src="js/drag.js"></script>
     <script src="js/main.js"></script>
 </body>
 

@@ -1,21 +1,26 @@
 'use strict'
 
-
 var gElCanvas;
 var gCtx;
 var gCurrImg;
 var gCurrLineId = 0;
 var gSearch = false;
 
+var gEndLinePos;
+var gStartLine;
+
 function init() {
+
     gElCanvas = document.querySelector('#canvas');
     gCtx = gElCanvas.getContext('2d');
     renderGallery(getImgs());
+    renderFilterWords(5);
+    // addListeners();
+    // renderCanvas();
 }
 
 function onAddMeme() {
     var eltxt = document.querySelector('#txt').value;
-
     addMeme(imgId, txt, size, align, color);
 }
 
@@ -32,6 +37,7 @@ function uploadImgToCanvas(imgID) {
 }
 
 function renderCanvas() {
+    // resizeCanvas();
     gCtx.save();
     gCtx.drawImage(gCurrImg, 0, 0, gElCanvas.width, gElCanvas.height);
     gCtx.restore();
@@ -51,7 +57,6 @@ function drawText(x, y, text, size, color, align) {
 
 function onTypeText(elText) {
     if (getCurrMeme().lines.length === 0) createLine({ x: 20, y: 75 }, '', 50, '', '');
-
     updateMemeTxt(getCurrMeme().selectedLineIdx, 'txt', elText.value);
     renderCanvas();
     renderTxtLine();
@@ -114,6 +119,7 @@ function onFontSize(bigSmall) {
 }
 
 function onChangeLine() {
+    if (getCurrMeme().lines.length <= 1) return;
     renderCanvas();
     var lineId = getCurrMeme().selectedLineIdx;
     if (lineId === 1) lineId = 0;
@@ -148,11 +154,14 @@ function onDeleteLine() {
     if (getCurrMeme().lines.length === 0) return;
     var lineId = getCurrMeme().selectedLineIdx;
     deleteLine(lineId);
-    renderCanvas();
-    renderTxtLine();
+
     if (lineId !== 0) lineId--;
     updateSelectedLine(lineId);
+    renderCanvas();
+    renderTxtLine();
+    markLine(lineId);
     document.querySelector('#txt').value = '';
+
 }
 
 function onAlign(value) {
@@ -168,16 +177,11 @@ function onAlign(value) {
     if (value === 'center') {
         posX = gElCanvas.width / 2;
     }
-
-
     updateLinePos(lineId, 'x', posX);
-
-
     updateMemeTxt(lineId, 'align', value);
     renderCanvas();
     renderTxtLine();
     markLine(lineId);
-
 }
 
 function downloadMeme(elLink) {
@@ -191,7 +195,7 @@ function downloadMeme(elLink) {
 }
 
 function markLine(lineID, color = 'lightgray') {
-
+    if (!getCurrMeme().lines[lineID]) return;
     var posY = getCurrMeme().lines[lineID].pos.y;
     var posX = getCurrMeme().lines[lineID].pos.x;
 
@@ -202,9 +206,19 @@ function markLine(lineID, color = 'lightgray') {
     drawLine(color, 10, posY - lineHeight, 10, posY + 12);
     drawLine(color, 10, posY + 12, gElCanvas.width - 10, posY + 12);
     drawLine(color, gElCanvas.width - 10, posY - lineHeight, gElCanvas.width - 10, posY + 12);
-    // renderCanvas();
-    // renderTxtLine();
+    // drawRect(color, 10, posY - lineHeight, gElCanvas.width - 10, posY + 12);
 
+
+}
+
+function drawRect(color, x, y, xEnd, yEnd) {
+    gCtx.beginPath();
+    gCtx.lineWidth = 2;
+    gCtx.rect(x, y, xEnd, yEnd);
+    gCtx.fillStyle = 'transparent';
+    // gCtx.fillRect(x, y, 150, 150);
+    gCtx.strokeStyle = color;
+    gCtx.stroke();
 }
 
 function drawLine(color, x, y, xEnd, yEnd) {
@@ -216,6 +230,11 @@ function drawLine(color, x, y, xEnd, yEnd) {
     gCtx.stroke();
 }
 
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-container');
+    gElCanvas.width = elContainer.offsetWidth;
+    gElCanvas.height = elContainer.offsetHeight;
+}
 
 function onImgInput(ev) {
     var reader = new FileReader()
@@ -242,4 +261,28 @@ function onSearch(ev) {
         if (!searched.length) renderGallery([]);
         else renderGallery(searched);
     }
+}
+
+function renderFilterWords(num) {
+    if (!num) var keywords = sortBy();
+    else var keywords = sortBy().slice(0, num);
+    var strHtmls = keywords.map((keyword) => {
+        return `<div style="font-size:100%" onclick="onSizeFilter(this,'${keyword.keyword}')">${keyword.keyword}</div>`;
+    });
+    strHtmls = strHtmls.join('');
+    document.querySelector('.filter-words-section').innerHTML = strHtmls;
+}
+
+function onSizeFilter(elWord, keyword) {
+    if (elWord.style.fontSize === '200%') return
+    var fontSize = parseInt((elWord.style.fontSize).slice(0, -1));
+    fontSize += 10;
+    elWord.style.fontSize = fontSize + '%';
+    gSearch = true;
+    renderGallery(searchImg(keyword));
+    // renderFilterWords();
+}
+
+function onMore() {
+    renderFilterWords();
 }
