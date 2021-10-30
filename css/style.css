@@ -115,7 +115,7 @@ small {
     padding: 1.4em 2.35em;
 }
 
-.control-box input {
+.control-box #txt {
     padding-left: 15px;
 }
 
