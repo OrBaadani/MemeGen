@@ -57,6 +57,10 @@ small {
 
 /* LAYOUT */
 
+.logo {
+    font-weight: 600;
+}
+
 .main-layout {
     margin-left: 5px;
     margin-right: 5px;
@@ -109,6 +113,10 @@ small {
     flex-direction: column;
     background-color: #383B42;
     padding: 1.4em 2.35em;
+}
+
+.control-box input {
+    padding-left: 15px;
 }
 
 .meme-generator {
@@ -182,6 +190,10 @@ canvas:hover {}
     margin-bottom: 27px;
     gap: 20px;
     width: 100%;
+}
+
+.share-btn:hover {
+    cursor: pointer;
 }
 
 .share-download span {
@@ -290,6 +302,7 @@ input[type="file"] {
 }
 
 .search-bar {
+    gap: 10px;
     flex-direction: column;
 }
 
@@ -334,9 +347,11 @@ input[type="file"] {
 .more-words-btn {
     font-size: 1rem;
     height: 1.5rem;
+    align-self: center;
 }
 
 .filter-words-section {
+    align-self: center;
     padding: 5px;
     width: fit-content;
     grid-template-columns: repeat(5, 1fr);
@@ -349,6 +364,10 @@ input[type="file"] {
 
 .filter-words-section div {
     display: inline;
+}
+
+.filter-words-section div:hover {
+    cursor: pointer;
 }
 
 .more-words-btn {

@@ -6,8 +6,8 @@ var gCurrImg;
 var gCurrLineId = 0;
 var gSearch = false;
 
-var gEndLinePos;
-var gStartLine;
+var gMore = false;
+
 
 function init() {
 
@@ -283,6 +283,18 @@ function onSizeFilter(elWord, keyword) {
     // renderFilterWords();
 }
 
-function onMore() {
-    renderFilterWords();
+function onMore(elBtn) {
+    if (!gMore) {
+        renderFilterWords();
+        elBtn.style.alignSelf = 'flex-start';
+        elBtn.innerText = 'less';
+        gMore = true;
+    } else {
+        renderFilterWords(5);
+        elBtn.style.alignSelf = 'center';
+
+        elBtn.innerText = 'more';
+        gMore = false;
+    }
+
 }

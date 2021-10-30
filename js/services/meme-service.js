@@ -61,7 +61,6 @@ function updateSelectedLine(newValue) {
     gMeme.selectedLineIdx = newValue;
 }
 
-
 // function isObjClicked(clickedPos) {
 //     for (var lineID = 0; lineID < gMeme.lines.length; lineID++) {
 //         // if (!gMeme.lines[lineID].txt) return;

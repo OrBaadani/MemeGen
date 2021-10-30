@@ -12,7 +12,7 @@
 <body onload="init()">
     <header class="main-header">
         <div class="header-container main-layout flex  space-between align-center">
-            <div class="logo"><a href="#">MemeGen</a></div>
+            <div onclick="init()" class="logo"><a href="#">MemeGen</a></div>
             <ul class="flex clean-list ">
                 <li onclick="onShowImg()"><a href="#gallery-section">Gallery</a></li>
                 <li><a href="#">About</a></li>
@@ -41,6 +41,10 @@
                         <button class="down-btn btn-fa" onclick="onMoveLine('down')"></button>
 
                         <br><br>
+                        <!-- <select>
+                            <option value="impact">Impact</option>
+                            <option value="arial">Arial</option>
+                        </select> -->
                         <button class="align-left-btn btn-fa" onclick="onAlign('left')"></button>
                         <button class="align-center-btn btn-fa" onclick="onAlign('center')"></button>
                         <button class="align-right-btn btn-fa" onclick="onAlign('right')"></button>
@@ -59,7 +63,7 @@
                     <input type="text" placeholder="Search.." name="search" class="search-input">
                     <button class="search-btn btn-fa" onclick="onSearch(event)"></button></form>
                 <div class="filter-words-section grid"></div>
-                <button onclick="onMore()" class="more-words-btn">more</button>
+                <button onclick="onMore(this)" class="more-words-btn">more</button>
             </div>
 
             <section id="image-gallery" class="image-gallery  grid">
