@@ -4,42 +4,42 @@ var gKeywords = {};
 var gImgs = [{
         id: 1,
         url: 'img/meme-imgs-sqr/1.jpg',
-        keywords: ['funny', 'politics']
+        keywords: ['cute', 'movie']
     },
     {
         id: 2,
         url: 'img/meme-imgs-sqr/2.jpg',
-        keywords: ['animal', 'happy', 'cute']
+        keywords: ['movie', 'actor']
     },
     {
         id: 3,
         url: 'img/meme-imgs-sqr/3.jpg',
-        keywords: ['animal', 'happy', 'cute']
+        keywords: ['movie', 'funny']
     },
     {
         id: 4,
         url: 'img/meme-imgs-sqr/4.jpg',
-        keywords: ['animal']
+        keywords: ['funny', 'cartoon']
     },
     {
         id: 5,
         url: 'img/meme-imgs-sqr/5.jpg',
-        keywords: ['cute', 'baby', 'mad']
+        keywords: ['actor', 'funny']
     },
     {
         id: 6,
         url: 'img/meme-imgs-sqr/6.jpg',
-        keywords: ['alien', 'man']
+        keywords: ['movie']
     },
     {
         id: 7,
         url: 'img/meme-imgs-sqr/7.jpg',
-        keywords: ['baby', 'cute']
+        keywords: ['tv', 'funny']
     },
     {
         id: 8,
         url: 'img/meme-imgs-sqr/8.jpg',
-        keywords: ['happy']
+        keywords: ['singer']
     },
     {
         id: 9,
@@ -49,22 +49,22 @@ var gImgs = [{
     {
         id: 10,
         url: 'img/meme-imgs-sqr/10.jpg',
-        keywords: ['happy']
+        keywords: ['politics']
     },
     {
         id: 11,
         url: 'img/meme-imgs-sqr/11.jpg',
-        keywords: ['happy']
+        keywords: ['funny', 'sport']
     },
     {
         id: 12,
         url: 'img/meme-imgs-sqr/12.jpg',
-        keywords: ['happy']
+        keywords: ['funny', 'tv']
     },
     {
         id: 13,
         url: 'img/meme-imgs-sqr/13.jpg',
-        keywords: ['happy']
+        keywords: ['actor', 'movie']
     },
     {
         id: 14,
@@ -74,23 +74,69 @@ var gImgs = [{
     {
         id: 15,
         url: 'img/meme-imgs-sqr/15.jpg',
-        keywords: ['happy']
+        keywords: ['movie']
     },
     {
         id: 16,
         url: 'img/meme-imgs-sqr/16.jpg',
-        keywords: ['happy']
+        keywords: ['movie']
     },
     {
         id: 17,
         url: 'img/meme-imgs-sqr/17.jpg',
-        keywords: ['happy']
+        keywords: ['politics']
     },
     {
         id: 18,
         url: 'img/meme-imgs-sqr/18.jpg',
         keywords: ['cartoon', 'movie']
+    },
+    {
+        id: 19,
+        url: 'img/meme-imgs-sqr/19.jpg',
+        keywords: ['politics']
+    },
+    {
+        id: 20,
+        url: 'img/meme-imgs-sqr/20.jpg',
+        keywords: ['cute', 'baby']
+    },
+    {
+        id: 21,
+        url: 'img/meme-imgs-sqr/21.jpg',
+        keywords: ['cute', 'animal']
+    },
+    {
+        id: 22,
+        url: 'img/meme-imgs-sqr/22.jpg',
+        keywords: ['cute', 'baby']
+    },
+    {
+        id: 23,
+        url: 'img/meme-imgs-sqr/23.jpg',
+        keywords: ['cute', 'animal']
+    },
+    {
+        id: 24,
+        url: 'img/meme-imgs-sqr/24.jpg',
+        keywords: ['funny', 'baby']
+    },
+    {
+        id: 25,
+        url: 'img/meme-imgs-sqr/25.jpg',
+        keywords: ['cute', 'animal']
+    },
+    {
+        id: 26,
+        url: 'img/meme-imgs-sqr/26.jpg',
+        keywords: ['alien', 'tv']
+    },
+    {
+        id: 27,
+        url: 'img/meme-imgs-sqr/27.jpg',
+        keywords: ['movie']
     }
+
 
 ];
 

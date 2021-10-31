@@ -1,5 +1,6 @@
 var gStartPos;
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend'];
+var gCurrStickerId;
 
 function addListeners() {
     addMouseListeners()
@@ -8,7 +9,6 @@ function addListeners() {
         renderCanvas();
         renderTxtLine();
         markLine(getCurrMeme().selectedLineIdx);
-
     })
 }
 
@@ -27,19 +27,22 @@ function addTouchListeners() {
 function onDown(ev) {
     gElCanvas.style.cursor = 'grabbing';
     const pos = getEvPos(ev);
+    gCurrStickerId = checkStickerClicked(pos);
     const lineID = checkLineClicked(pos);
-    if (lineID === undefined) {
-        // if()
-        // else
-        return;
-    }
-    updateMemeTxt(lineID, 'isDrag', true);
-    updateSelectedLine(lineID);
-    renderCanvas();
-    renderTxtLine();
-    markLine(lineID);
-    gStartPos = pos;
+    if (lineID !== undefined) {
+        updateMemeTxt(lineID, 'isDrag', true);
+        updateSelectedLine(lineID);
+        renderCanvas();
+        renderTxtLine();
+        markLine(lineID);
+        gStartPos = pos;
 
+        // } else if (gCurrStickerId !== undefined) {
+        //     updateSticker(gCurrStickerId, 'isDrag', true);
+        //     renderCanvas();
+        //     renderTxtLine();
+        //     console.log('true');
+    } else return;
 }
 
 function onMove(ev) {
@@ -47,6 +50,7 @@ function onMove(ev) {
     const pos = getEvPos(ev);
     var lineId = getCurrMeme().selectedLineIdx;
     const line = getCurrMeme().lines[lineId];
+    // const sticker = getStickersById(gCurrStickerId);
     if (line.isDrag) {
         const dx = pos.x - gStartPos.x
         const dy = pos.y - gStartPos.y
@@ -56,13 +60,22 @@ function onMove(ev) {
         renderTxtLine();
         markLine(lineId);
     }
+    // else if (sticker.isDrag) {
+    //     const sdx = pos.x - gStartPos.x
+    //     const sdy = pos.y - gStartPos.y
+    //     gStartPos = pos;
+    //     moveSticker(sticker.id, sdx, sdy);
+    //     renderCanvas();
+    //     renderTxtLine();
+    // }
 
 }
 
 function onUp() {
+
     updateMemeTxt(getCurrMeme().selectedLineIdx, 'isDrag', false);
     gElCanvas.style.cursor = 'grab';
-
+    // updateSticker(gCurrStickerId, 'isDrag', false);
 }
 
 function getEvPos(ev) {
