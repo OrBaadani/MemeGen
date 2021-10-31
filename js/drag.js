@@ -4,9 +4,12 @@ const gTouchEvs = ['touchstart', 'touchmove', 'touchend'];
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
-        // window.addEventListener('mousemove', () => {
-        //     document.body.style.cursor = 'default';
-        // })
+    window.addEventListener('resize', () => {
+        renderCanvas();
+        renderTxtLine();
+        markLine(getCurrMeme().selectedLineIdx);
+
+    })
 }
 
 function addMouseListeners() {
@@ -22,14 +25,17 @@ function addTouchListeners() {
 }
 
 function onDown(ev) {
+    gElCanvas.style.cursor = 'grabbing';
     const pos = getEvPos(ev);
-    if (!isObjClicked(pos)) return;
-    updateMemeTxt(getCurrMeme().selectedLineIdx, 'isDrag', true);
-    console.log('clicked');
+    const lineID = checkLineClicked(pos);
+    if (lineID === undefined) return;
+    updateMemeTxt(lineID, 'isDrag', true);
+    updateSelectedLine(lineID);
     renderCanvas();
     renderTxtLine();
-    markLine(getCurrMeme().selectedLineIdx);
+    markLine(lineID);
     gStartPos = pos;
+
 }
 
 function onMove(ev) {
@@ -37,15 +43,22 @@ function onMove(ev) {
     const pos = getEvPos(ev);
     var lineId = getCurrMeme().selectedLineIdx;
     const line = getCurrMeme().lines[lineId];
-    if (isObjClicked(pos)) {
-        document.body.style.cursor = 'move';
-    } else {
-        document.body.style.cursor = 'default';
+    if (line.isDrag) {
+        const dx = pos.x - gStartPos.x
+        const dy = pos.y - gStartPos.y
+        gStartPos = pos;
+        moveLine(lineId, dx, dy);
+        renderCanvas();
+        renderTxtLine();
+        markLine(lineId);
     }
+
 }
 
 function onUp() {
     updateMemeTxt(getCurrMeme().selectedLineIdx, 'isDrag', false);
+    gElCanvas.style.cursor = 'grab';
+
 }
 
 function getEvPos(ev) {

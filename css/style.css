@@ -66,6 +66,12 @@ small {
     margin-right: 5px;
 }
 
+.btn-menu {
+    background-color: transparent;
+    color: white;
+    font-size: 1.5em;
+}
+
 
 /* header */
 
@@ -80,7 +86,7 @@ small {
     background: linear-gradient(90deg, rgba(18, 158, 172, 1) 0%, rgba(30, 170, 150, 1) 40%, rgba(41, 180, 129, 1) 70%, rgba(47, 186, 117, 1) 100%);
 }
 
-.a-clicked {
+.header-container a:hover {
     color: #2bb67e;
     border-radius: 2em;
     background-color: white;
@@ -94,6 +100,42 @@ small {
     text-align: center;
     padding: 0.588em 1em;
     line-height: 4.117em;
+}
+
+.saved-memes {
+    padding: 5px;
+    background-color: rgb(56 59 66);
+    border-radius: 1.176em;
+    grid-template-columns: repeat(auto-fill, 140px);
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.saved-memes-img {
+    width: 140px;
+    border-radius: 1.176em;
+}
+
+.hide {
+    display: none;
+}
+
+.main-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .25);
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .6s;
+}
+
+body.menu-open .main-screen {
+    pointer-events: auto;
+    opacity: 1;
 }
 
 
@@ -136,8 +178,6 @@ canvas {
     border-radius: 1.176em;
     border: 10px solid #383B42;
 }
-
-canvas:hover {}
 
 .control-box>input {
     border: none;
@@ -188,16 +228,65 @@ canvas:hover {}
 
 .share-download {
     margin-bottom: 27px;
-    gap: 20px;
+    gap: 6px;
     width: 100%;
+}
+
+
+/* input[type="color"] {
+    font-family: fa;
+}
+
+input[type="color"]::before {
+    content: '\f53f'; 
+}*/
+
+select {
+    font-size: 1.4em;
+    font-family: poppins;
+    background-color: white;
+    box-shadow: 0 4px 0 grey;
+    border-radius: 0.5em;
+    width: 5em;
+    line-height: 1.5em;
+}
+
+select option[value='impact'] {
+    font-family: impact;
+}
+
+select option[value='arial'] {
+    font-family: Arial;
+}
+
+select option[value='tahoma'] {
+    font-family: Tahoma;
+}
+
+select option[value='Times New Roman'] {
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .share-btn:hover {
     cursor: pointer;
 }
 
+.save-btn:hover {
+    cursor: pointer;
+}
+
 .share-download span {
     font-family: fa;
+}
+
+.save-btn {
+    font-family: poppins;
+    font-size: 1.23em;
+    flex-basis: 33%;
+}
+
+.save-btn span::before {
+    content: '\f0c7';
 }
 
 .stickers-section {
@@ -250,7 +339,7 @@ canvas:hover {}
 .share-btn {
     font-family: poppins;
     font-size: 1.23em;
-    flex-basis: 50%;
+    flex-basis: 33%;
     box-shadow: 0px 4px 0 #165b9c;
     background-color: #1e7cd3;
     color: white;
@@ -263,7 +352,7 @@ canvas:hover {}
 .download-btn {
     font-weight: 400;
     text-align: center;
-    flex-basis: 50%;
+    flex-basis: 33%;
     box-shadow: 0px 4px 0 #632687;
     background-color: #8f44bb;
     border-radius: 0.5em;
@@ -354,7 +443,7 @@ input[type="file"] {
     align-self: center;
     padding: 5px;
     width: fit-content;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, auto);
     padding-right: 10px;
     padding-left: 10px;
     gap: 5px;
@@ -456,10 +545,41 @@ input[type="file"] {
 
 /* BP */
 
+@media (max-width: 500px) {
+    .btn-menu {
+        display: block;
+    }
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        flex-direction: column;
+        background-color: rgb(42 42 42 / 72%);
+        width: 200px;
+        transform: translateX(100%);
+        border-inline-start: 1px solid #e0e0e0;
+        transition: transform .6s, box-shadow .6s;
+    }
+    body.menu-open .main-nav {
+        transform: translateX(0);
+        box-shadow: -2px -2px 20px rgba(0, 0, 0, .25);
+    }
+    .main-nav>*:not(:last-child) {
+        margin: 0;
+    }
+    .main-nav a {
+        display: block;
+        padding: 10px 16px;
+        /* border-bottom: 1px solid #e0e0e0; */
+        transition: background .3s;
+    }
+}
+
 
 /* small */
 
-@media (min-width :380px) {
+@media (min-width :480px) {
     .main-layout {
         max-width: 460px;
         margin-left: auto;
@@ -473,6 +593,9 @@ input[type="file"] {
     }
     .image-gallery>* {
         width: 170px;
+    }
+    .btn-menu {
+        display: none;
     }
 }
 
@@ -517,9 +640,9 @@ footer {
     .search-bar {
         flex-direction: row;
     }
-    /* .filter-words-section {
-        grid-template-columns: repeat(5, 1fr);
-    } */
+    .share-download {
+        gap: 20px;
+    }
 }
 
 

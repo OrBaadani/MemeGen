@@ -129,7 +129,6 @@ function filterWords() {
         return img.keywords.forEach(keyword => {
             gKeywords[keyword] = gKeywords[keyword] ? gKeywords[keyword] + 1 : 1;
         });
-
     });
     return gKeywords;
 }
@@ -148,7 +147,6 @@ function sortBy() {
     gKeywords = sortable;
     gSorted = true;
     return gKeywords;
-
 
     // gKeywords = {}
     // sortable.forEach(function(item) {

@@ -6,10 +6,11 @@ function uploadShare() {
             //    ` href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;"`
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}`);
     }
-    doUploadImg(imgDataUrl, onSuccess);
+
     renderCanvas();
     renderTxtLine();
     markLine(getCurrMeme().selectedLineIdx, 'transparent');
+    doUploadImg(imgDataUrl, onSuccess);
 }
 
 function doUploadImg(imgDataUrl, onSuccess) {

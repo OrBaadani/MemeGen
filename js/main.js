@@ -5,7 +5,6 @@ var gCtx;
 var gCurrImg;
 var gCurrLineId = 0;
 var gSearch = false;
-
 var gMore = false;
 
 
@@ -15,8 +14,10 @@ function init() {
     gCtx = gElCanvas.getContext('2d');
     renderGallery(getImgs());
     renderFilterWords(5);
-    // addListeners();
-    // renderCanvas();
+    renderSavedMemes();
+    addListeners();
+    gElCanvas.style.cursor = 'grab';
+
 }
 
 function onAddMeme() {
@@ -37,18 +38,22 @@ function uploadImgToCanvas(imgID) {
 }
 
 function renderCanvas() {
-    // resizeCanvas();
+    resizeCanvas();
     gCtx.save();
+    // const currSize=document.querySelector('#canvas');
+    // gElCanvas.width=currSize.
+    // gElCanvas.height=
     gCtx.drawImage(gCurrImg, 0, 0, gElCanvas.width, gElCanvas.height);
     gCtx.restore();
+
 }
 
-function drawText(x, y, text, size, color, align) {
+function drawText(x, y, text, size, color, font, align) {
 
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = 'black';
     gCtx.fillStyle = color;
-    gCtx.font = `${size}px Impact`;
+    gCtx.font = `${size}px ${font}`;
     gCtx.textAlign = align;
     gCtx.fillText(text, x, y);
     gCtx.strokeText(text, x, y);
@@ -56,7 +61,7 @@ function drawText(x, y, text, size, color, align) {
 
 
 function onTypeText(elText) {
-    if (getCurrMeme().lines.length === 0) createLine({ x: 20, y: 75 }, '', 50, '', '');
+    if (getCurrMeme().lines.length === 0) createLine({ x: 20, y: 75 }, '');
     updateMemeTxt(getCurrMeme().selectedLineIdx, 'txt', elText.value);
     renderCanvas();
     renderTxtLine();
@@ -73,10 +78,17 @@ function onColor(elColor) {
 
 }
 
+function onFontSelect(font) {
+    updateMemeTxt(getCurrMeme().selectedLineIdx, 'font', font);
+    renderCanvas();
+    renderTxtLine();
+    markLine(getCurrMeme().selectedLineIdx);
+}
+
 function renderTxtLine() {
     var lines = getCurrMeme().lines;
     lines.forEach((line, idx) => {
-        drawText(line.pos.x, line.pos.y, line.txt, line.size, line.color, line.align);
+        drawText(line.pos.x, line.pos.y, line.txt, line.size, line.color, line.font, line.align);
     });
 
 
@@ -100,10 +112,11 @@ function renderGallery(imgs) {
 function onChooseImg(elImg, imgID) {
     gCurrImg = elImg;
     uploadImgToCanvas(imgID);
-    createMeme(imgID, '', { x: gElCanvas.width / 2, y: 75 }, 50, 'center', 'white');
+    createMeme(imgID, '', { x: gElCanvas.width / 2, y: 75 });
 
     // updateMemeCurrImg(imgID);
     document.querySelector('.generator-container').style.display = 'block';
+
 }
 
 function onFontSize(bigSmall) {
@@ -136,7 +149,7 @@ function onAddMoreLines() {
     lineId++;
     document.querySelector('#txt').value = '';
     updateSelectedLine(lineId);
-    if (lineId === 1) createLine({ x: gElCanvas.width / 2, y: gElCanvas.height - 75 }, '', 50, 'center', 'white');
+    if (lineId === 1) createLine({ x: gElCanvas.width / 2, y: gElCanvas.height - 75 }, '');
 }
 
 function onMoveLine(upDown) {
@@ -231,7 +244,7 @@ function drawLine(color, x, y, xEnd, yEnd) {
 }
 
 function resizeCanvas() {
-    const elContainer = document.querySelector('.canvas-container');
+    const elContainer = document.querySelector('canvas');
     gElCanvas.width = elContainer.offsetWidth;
     gElCanvas.height = elContainer.offsetHeight;
 }
@@ -247,7 +260,7 @@ function onImgInput(ev) {
         gCurrImg = img;
     }
     reader.readAsDataURL(ev.target.files[0]);
-    createMeme(gCurrImg, '', { x: gElCanvas.width / 2, y: 75 }, 50, 'center', 'white');
+    createMeme(gCurrImg, '', { x: gElCanvas.width / 2, y: 75 });
     document.querySelector('.generator-container').style.display = 'block';
 }
 
@@ -292,9 +305,35 @@ function onMore(elBtn) {
     } else {
         renderFilterWords(5);
         elBtn.style.alignSelf = 'center';
-
         elBtn.innerText = 'more';
         gMore = false;
     }
+
+}
+
+function onSaveMeme() {
+    var url = gElCanvas.toDataURL();
+    // document.querySelector('.canvas-img').src = url;
+    addMeme(url);
+    saveToStorage('memeDB', getSavedMemes());
+    renderSavedMemes()
+}
+
+function renderSavedMemes() {
+    var str = ``;
+    for (var i = 0; i < getSavedMemes().length; i++) {
+        str += `<img class="saved-memes-img" src="${getSavedMemes()[i]}">`
+    }
+    console.log(str);
+    document.querySelector('.saved-memes').innerHTML = str;
+
+}
+
+function onShowSavedMemes() {
+    document.querySelector('.saved-memes-section').classList.toggle('hide');
+}
+
+function toggleMenu() {
+    document.body.classList.toggle('menu-open');
 
 }
