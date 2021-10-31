@@ -6,6 +6,7 @@ function addListeners() {
     addMouseListeners()
     addTouchListeners()
     window.addEventListener('resize', () => {
+        if (!getCurrMeme()) return;
         renderCanvas();
         renderTxtLine();
         markLine(getCurrMeme().selectedLineIdx);

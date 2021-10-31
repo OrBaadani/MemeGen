@@ -27,7 +27,7 @@
         <section class="saved-memes-section hide">
             <div class="saved-memes grid"></div>
         </section>
-        <div hidden class="generator-container">
+        <div hidden class="generator-container" id="generator-container">
             <section class="meme-generator flex">
                 <div class="canvas-container">
                     <canvas id="canvas" height="500" width="500"></canvas>
@@ -43,7 +43,7 @@
                     <section class="style-line">
                         <button class="size-btn" onclick="onFontSize('+')">A+</button>
                         <button class="size-btn" onclick="onFontSize('-')">A-</button>
-                        <input type="color" id="color" nameoninput="onColor(this)">
+                        <input type="color" id="color" oninput="onColor(this)">
                         <button class="up-btn btn-fa" onclick="onMoveLine('up')"></button>
                         <button class="down-btn btn-fa" onclick="onMoveLine('down')"></button>
 

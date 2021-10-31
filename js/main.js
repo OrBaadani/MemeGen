@@ -65,6 +65,7 @@ function onTypeText(elText) {
 }
 
 function onColor(elColor) {
+    console.log(elColor.value)
     updateMemeTxt(getCurrMeme().selectedLineIdx, 'color', elColor.value);
     renderCanvas();
     renderTxtLine();
@@ -104,6 +105,7 @@ function onChooseImg(elImg, imgID) {
     uploadImgToCanvas(imgID);
     createMeme(imgID, '', { x: gElCanvas.width / 2, y: 75 });
     document.querySelector('.generator-container').style.display = 'block';
+    window.location.href = '#';
 }
 
 function onFontSize(bigSmall) {
