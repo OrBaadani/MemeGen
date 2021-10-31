@@ -331,6 +331,7 @@ function renderSavedMemes() {
 
 function onShowSavedMemes() {
     document.querySelector('.saved-memes-section').classList.toggle('hide');
+    document.body.classList.remove('menu-open');
 }
 
 function toggleMenu() {
