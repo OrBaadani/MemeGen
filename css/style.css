@@ -86,7 +86,7 @@ small {
     background: linear-gradient(90deg, rgba(18, 158, 172, 1) 0%, rgba(30, 170, 150, 1) 40%, rgba(41, 180, 129, 1) 70%, rgba(47, 186, 117, 1) 100%);
 }
 
-.header-container a:hover {
+.header-container li a:hover {
     color: #2bb67e;
     border-radius: 2em;
     background-color: white;
@@ -152,7 +152,6 @@ body.menu-open .main-screen {
     font-size: 14px;
     border-radius: 20px;
     flex-basis: 50%;
-    /* height: 540px; */
     flex-direction: column;
     background-color: #383B42;
     padding: 1.4em 2.35em;
@@ -233,6 +232,10 @@ canvas {
     width: 100%;
 }
 
+.stickers-section img {
+    width: 50px;
+}
+
 
 /* input[type="color"] {
     font-family: fa;
@@ -285,6 +288,8 @@ select option[value='Times New Roman'] {
     font-family: poppins;
     font-size: 1.23em;
     flex-basis: 33%;
+    background-color: rgb(248, 114, 90);
+    box-shadow: 0 4px 0 rgb(250, 79, 49);
 }
 
 .save-btn span::before {
@@ -416,6 +421,7 @@ input[type="file"] {
     background-color: #22252C;
     border-radius: 2rem;
     line-height: 1.5rem;
+    width: 175px;
 }
 
 .search-btn {
@@ -442,6 +448,7 @@ input[type="file"] {
 }
 
 .filter-words-section {
+    font-size: 0.85rem;
     align-self: center;
     padding: 5px;
     width: fit-content;
@@ -641,6 +648,9 @@ footer {
     }
     .share-download {
         gap: 20px;
+    }
+    .filter-words-section {
+        font-size: 1rem;
     }
 }
 

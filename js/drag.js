@@ -28,7 +28,11 @@ function onDown(ev) {
     gElCanvas.style.cursor = 'grabbing';
     const pos = getEvPos(ev);
     const lineID = checkLineClicked(pos);
-    if (lineID === undefined) return;
+    if (lineID === undefined) {
+        // if()
+        // else
+        return;
+    }
     updateMemeTxt(lineID, 'isDrag', true);
     updateSelectedLine(lineID);
     renderCanvas();

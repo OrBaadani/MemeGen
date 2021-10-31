@@ -75,12 +75,9 @@ function moveLine(lineID, dx, dy) {
     gMeme.lines[lineID].pos.y += dy;
 }
 
-function createSticker() {
-
-}
-
 function addMeme(url) {
-    saved.push(url);
+    gSavedMemes.push(url);
+    saveToStorage('memeDB', gSavedMemes);
 }
 
 function getSavedMemes() {
